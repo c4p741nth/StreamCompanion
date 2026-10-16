@@ -8,6 +8,7 @@ namespace LiveVisualizer
     public partial class ColorPickerWithPreview : UserControl
     {
         public event EventHandler<Color> ColorChanged;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Color Color
         {
             get => panel_colorPreview.BackColor;

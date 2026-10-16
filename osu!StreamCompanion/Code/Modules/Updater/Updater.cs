@@ -36,8 +36,7 @@ namespace osu_StreamCompanion.Code.Modules.Updater
         }
         public void Start(ILogger logger)
         {
-            //TODO: handle not supported exception
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; //Force usage of TLS1.2 when possible.
+            // TLS version is left to the OS default (TLS 1.2/1.3); ServicePointManager is obsolete on .NET 10.
             Started = true;
             CheckForUpdates();
         }

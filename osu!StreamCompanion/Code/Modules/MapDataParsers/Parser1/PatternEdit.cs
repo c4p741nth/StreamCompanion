@@ -20,6 +20,7 @@ namespace osu_StreamCompanion.Code.Modules.MapDataParsers.Parser1
         private OutputPattern _current;
         private bool _inGameOverlayIsAvailable;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool InGameOverlayIsAvailable
         {
             get => _inGameOverlayIsAvailable;
@@ -49,6 +50,7 @@ namespace osu_StreamCompanion.Code.Modules.MapDataParsers.Parser1
             {"Watching & Playing & Results screen",OsuStatus.Watching | OsuStatus.Playing | OsuStatus.ResultsScreen },
             {"Never",OsuStatus.Null }
         };
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public OutputPattern Current
         {
             get { return _current; }

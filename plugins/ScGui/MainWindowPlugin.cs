@@ -137,7 +137,7 @@ namespace ScGui
                     }
 
                     _settingsForm = new SettingsForm(settingsSources);
-                    _settingsForm.Closed += SettingsFormOnClosed;
+                    _settingsForm.FormClosed += SettingsFormOnClosed;
                     _settingsForm.Show();
                 };
                 _mainWindow.Closed += (_, __) => Quit(true);
@@ -179,9 +179,9 @@ namespace ScGui
             _exitAction?.Invoke("User pressed exit");
         }
 
-        private void SettingsFormOnClosed(object sender, EventArgs e)
+        private void SettingsFormOnClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
-            _settingsForm.Closed -= SettingsFormOnClosed;
+            _settingsForm.FormClosed -= SettingsFormOnClosed;
             _settingsForm?.Dispose();
             _settingsForm = null;
         }

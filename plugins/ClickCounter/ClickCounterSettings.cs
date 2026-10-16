@@ -24,12 +24,12 @@ namespace ClickCounter
             keyboardCounterKeyClick.Location = new System.Drawing.Point(this.Location.X + 20, this.Location.Y + 20);
             keyboardListener = new KeyboardListener(true);
             keyboardListener.KeyDown += Kb_KeyDown;
-            keyboardCounterKeyClick.Closing += KeyboardCounterKeyClick_Closing;
+            keyboardCounterKeyClick.FormClosing += KeyboardCounterKeyClick_FormClosing;
             keyboardCounterKeyClick.ShowDialog();
 
         }
 
-        private void KeyboardCounterKeyClick_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void KeyboardCounterKeyClick_FormClosing(object sender, FormClosingEventArgs e)
         {
             keyboardListener.KeyDown -= Kb_KeyDown;
         }

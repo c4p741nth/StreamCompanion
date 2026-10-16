@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using StreamCompanionTypes.Interfaces.Services;
 using WebSocketDataSender.WebOverlay.Models;
@@ -17,9 +18,12 @@ namespace WebSocketDataSender.WebOverlay
         public EventHandler OpenWebUrl;
         public EventHandler ToggleRemoteAccess;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string WebUrl { set => label_webUrl.Text = value; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string FilesLocation { set => label_localFiles.Text = value; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RemoteAccessEnabled
         {
             set

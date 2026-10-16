@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>osu_StreamCompanion</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -83,8 +83,6 @@
 	<PackageReference Include="Sentry" />
 	<PackageReference Include="Newtonsoft.Json" />
 	<PackageReference Include="System.ComponentModel.Composition" />
-	<PackageReference Include="System.Drawing.Common" />
-	<PackageReference Include="System.Security.AccessControl" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">

@@ -1,9 +1,19 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+    <!-- Pins the transitive versions below so vulnerable transitive packages resolve to patched versions -->
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- SixLabors.ImageSharp 3.1.11 comes in transitively via ppy.osu.Framework (osu submodule); the fixes only exist in 4.x, which osu.Framework does not support.
+         SC never decodes images through osu.Framework (ProcessorWorkingBeatmap.GetBackground returns null), so the affected TIFF/ICC/histogram paths are not reachable. -->
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-gwg2-r3hj-4w44" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-j3p4-wp97-rph4" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-j9gm-c75j-xc9q" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-jjfr-hcj7-qf5w" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-wmxv-xphr-5c9g" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="StreamCompanionTypes" />
   </ItemGroup>
@@ -27,9 +37,12 @@
     <PackageVersion Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageVersion Include="System.ComponentModel.Composition" Version="5.0.0" />
     <PackageVersion Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageVersion Include="System.Drawing.Common" Version="7.0.0" />
     <PackageVersion Include="System.Runtime.Caching" Version="5.0.0" />
-    <PackageVersion Include="System.Security.AccessControl" Version="5.0.0" />
     <PackageVersion Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <!-- Transitive pins for security fixes (CollectionManager, osu.Game) -->
+    <PackageVersion Include="SharpCompress" Version="0.49.1" />
+    <PackageVersion Include="MessagePack" Version="3.1.12" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Common" Version="10.0.13" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="10.0.13" />
   </ItemGroup>
 </Project>

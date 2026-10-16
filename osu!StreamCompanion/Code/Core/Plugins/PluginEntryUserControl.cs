@@ -2,6 +2,7 @@
 using StreamCompanionTypes.Attributes;
 using StreamCompanionTypes.Interfaces;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,6 +25,7 @@ namespace osu_StreamCompanion.Code.Core.Plugins
         private Panel _buttonPanel;
 
         private LocalPluginEntry _pluginEntry;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public LocalPluginEntry LocalPluginEntry
         {
             get => _pluginEntry;
