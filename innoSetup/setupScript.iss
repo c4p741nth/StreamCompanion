@@ -74,9 +74,9 @@ Type: filesandordirs; Name: "{app}\Files"
 Type: files; Name: "{app}\SQLite.Interop.dll"
 
 [CustomMessages]
-IDP_DownloadFailed=Download of .NET 6 failed. .NET 6 Desktop runtime is required to run StreamCompanion.
+IDP_DownloadFailed=Download of .NET 10 failed. .NET 10 Desktop runtime is required to run StreamCompanion.
 IDP_RetryCancel=Click 'Retry' to try downloading the files again, or click 'Cancel' to terminate setup.
-InstallingDotNetRuntime=Installing .NET 6 Desktop Runtime. This might take a few minutes...
+InstallingDotNetRuntime=Installing .NET 10 Desktop Runtime. This might take a few minutes...
 DotNetRuntimeFailedToLaunch=Failed to launch .NET Runtime Installer with error "%1". Please fix the error then run this installer again.
 DotNetRuntimeFailed1602=.NET Runtime installation was cancelled. This installation can continue, but be aware that this application may not run unless the .NET Runtime installation is completed successfully.
 DotNetRuntimeFailed1603=A fatal error occurred while installing the .NET Runtime. Please fix the error, then run the installer again.
@@ -145,8 +145,8 @@ var
 begin
   Result := True;
 
-  minimumVersion := '8.0.10';
-  maximumExclusiveVersion := '8.999.999';
+  minimumVersion := '10.0.0';
+  maximumExclusiveVersion := '10.999.999';
   registryKey := 'SOFTWARE\WOW6432Node\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App';
   if RegGetValueNames(HKLM, registryKey, runtimes) then
   begin
@@ -168,7 +168,7 @@ procedure InitializeWizard;
 begin
   if NetRuntimeIsMissing() then
   begin
-    idpAddFile('https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe', ExpandConstant('{tmp}\NetRuntimeInstaller.exe'));
+    idpAddFile('https://aka.ms/dotnet/10.0/windowsdesktop-runtime-win-x64.exe', ExpandConstant('{tmp}\NetRuntimeInstaller.exe'));
     idpDownloadAfter(wpReady);
   end;
 end;
